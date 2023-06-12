@@ -17,3 +17,15 @@ Client-side rendering (CSR) is when the React application is rendered entirely i
 In general, CSR is the simpler option to implement and more popular, but SSR is a good choice for certain use cases, such as when SEO is a primary concern, or when the app is targeting users on slow internet connections.
 
 It is also worth noting that, it is possible to have a hybrid approach between SSR and CSR which is called isomorphic or universal rendering. This approach allows to leverage the benefits of both SSR and CSR.
+
+
+**2. What is CORS ?**
+CORS, which stands for Cross-Origin Resource Sharing, is a crucial web security mechanism. It allows web browsers to securely access resources (like fonts, images, or APIs) from different origins or domains.
+
+✋ Why is CORS important? Well, imagine browsing a website and it needs to load data from a different domain. Without CORS, your browser would throw up a security error and block the request. CORS steps in to ensure these requests are made securely, while protecting your data from potential threats.
+
+🔒 So, how does CORS work? When your browser makes a request to a different domain, it first sends an "origin" header specifying where the request originated. The server then checks this header and decides whether to allow or deny the request based on its CORS policy.
+
+🌐 CORS policy typically includes information about which domains are allowed to access the server's resources. It can be set to permit requests from specific origins, or using wildcard characters, such as allowing requests from any origin.
+
+💪 By enforcing CORS, web developers can strike a balance between allowing legitimate cross-origin requests and preventing unauthorized access to sensitive data.
