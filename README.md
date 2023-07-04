@@ -43,4 +43,4 @@ Performance:
 
 Debouncing with 200ms
 - if difference between 2 key strokes is < 200ms - DECLINE API CALL
-- > 200ms make an API call
+-  > 200ms make an API call
