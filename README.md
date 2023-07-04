@@ -30,3 +30,17 @@ It is also worth noting that, it is possible to have a hybrid approach between S
 🌐 CORS policy typically includes information about which domains are allowed to access the server's resources. It can be set to permit requests from specific origins, or using wildcard characters, such as allowing requests from any origin.
 
 💪 By enforcing CORS, web developers can strike a balance between allowing legitimate cross-origin requests and preventing unauthorized access to sensitive data.
+
+
+**3. What i s debouncing ?**
+
+typing slow = 200ms
+typing fast = 300ms
+
+Performance:
+- iphone 12pro max = 16 letters * 1000 = 16000
+- with debouncing = 3 letters * 1000 = 3000
+
+Debouncing with 200ms
+- if difference between 2 key strokes is < 200ms - DECLINE API CALL
+- > 200ms make an API call
