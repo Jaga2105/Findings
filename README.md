@@ -52,3 +52,11 @@ Thunk allows us to dispatch actions manually, which gives us the power to incorp
 ![redux without thunk](https://github.com/Jaga2105/Findings/assets/110304276/be63b214-65f2-4d0b-ad85-27a9872555d1)
 ![redux-with-thunk](https://github.com/Jaga2105/Findings/assets/110304276/d3e9b82c-3456-4e6c-98ff-01f8132954f1)
 
+
+**5. Difference between reducers and extraReducers in RTK.**
+
+The reducers property both creates an action creator function and responds to that action in the slice reducer. The extraReducers allows you to respond to an action in your slice reducer but does not create an action creator function.
+
+We will use reducers most of the time. We would use extraReducers when you are dealing with an action that you have already defined somewhere else. The most common examples are responding to a createAsyncThunk action and responding to an action from another slice.
+
+If we create an action using createAsyncThunk function (which is imported from "@reduxjs/toolkit") we can handle loading, success & failure states.
