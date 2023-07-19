@@ -34,16 +34,9 @@ It is also worth noting that, it is possible to have a hybrid approach between S
 
 **3. What i s debouncing ?**
 
-typing slow = 200ms
-typing fast = 300ms
+A Debouncing Events in ReactJS will allow you to call a function that ensures that a time-consuming task does not fire so often. It’s a function that takes a function as a parameter and wraps that function in a closure and returns it so this new function displays the “wait for a bit” behaviour.
 
-Performance:
-- iphone 12pro max = 16 letters * 1000 = 16000
-- with debouncing = 3 letters * 1000 = 3000
-
-Debouncing with 200ms
-- if difference between 2 key strokes is < 200ms - DECLINE API CALL
--  > 200ms make an API call
+With debouncing we can make our app performant and by reducing the unwanted API calls.
 
 
 **4. What is the use of Middleware Redux Thunk??**
