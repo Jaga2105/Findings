@@ -44,3 +44,18 @@ Performance:
 Debouncing with 200ms
 - if difference between 2 key strokes is < 200ms - DECLINE API CALL
 -  > 200ms make an API call
+
+
+**4. What is the use of Middleware Redux Thunk??**
+
+Redux supports middleware, and middleware functions run between dispatching an action and the moment it reaches the reducer. Redux middlewares can be used for logging, routing, asynchronous actions, etc.
+
+Plain redux doesn’t allow complex logic inside action functions, you can only perform simple synchronous updates by dispatching actions. This middleware extends its ability and lets you write complex logic that interacts with the store. Thunk doesn’t interfere with the action until it returns a function.
+
+Thunk allows us to dispatch actions manually, which gives us the power to incorporate some logic or run some asynchronous code before dispatching an action. The function returned from action is called a thunk function which is called with two arguments : 
+1. dispatch: It is a method used to dispatch actions, that can be received by reducers. 
+2. getState: It gives access to store inside the thunk function.
+
+![redux without thunk](https://github.com/Jaga2105/Findings/assets/110304276/be63b214-65f2-4d0b-ad85-27a9872555d1)
+![redux-with-thunk](https://github.com/Jaga2105/Findings/assets/110304276/d3e9b82c-3456-4e6c-98ff-01f8132954f1)
+
