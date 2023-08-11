@@ -1,0 +1,107 @@
+**1. What is polyfill ?**
+A polyfill in JavaScript is a piece of code (usually written in JavaScript) that provides modern functionality to older browsers or environments that do not natively support that functionality.
+
+In web development, new features and APIs are often introduced in newer versions of web browsers,
+but not all users may be using the latest versions. This can create compatibility issues,
+where a website or web application works perfectly in one browser but breaks or behaves differently in another. 
+Polyfills help address this problem by "filling in" the gaps in functionality for older browsers, 
+allowing developers to use new features and APIs in a way that remains compatible with a wider range of browsers.
+
+Polyfills for Array.map():
+Array.prototype.myMap = function (cb){
+  let temp = [];
+for(let i=0; i<this.length;i++){
+  temp.push(this[i],i,this);
+}
+return temp;
+};
+const nums = [1,2,3,4]  
+const newArr = nums.myMap((num, i, arr)=>{
+  return num*3;
+})
+Polyfill for Array.filter():
+Array.prototype.myMap = function (cb){
+  let temp = [];
+for(let i=0; i<this.length;i++){
+if(cb(this[i], i ,this)){
+  temp.push(this[i]);
+  }
+}
+return temp;
+};
+const nums = [1,2,3,4]  
+const newArr = nums.myMap((num, i, arr)=>{
+  return num > 2;
+})
+Polyfill for Array.reduce():
+Array.prototype.myReduce = function (cb, initialValue){
+    var accumulator = initialValue;
+  for(let i=0; i<this.length;i++){
+    accumulator = accumulator ? cb(accumulator, this[i], i, this) : this[i];
+  }
+  return accumulator;
+  };
+  const nums = [1,2,3,4]  
+  const newVal = nums.myReduce((acc, cur, i, arr)=>{
+    return acc+cur;
+  },0);
+  console.log(newVal)
+
+**2. map vs forEach**
+map:
+The map method creates a new array by calling a provided function on every element in the original array. The original array remains unchanged.
+We can also apply function chaining on map() but not on forEach
+eg:  const numbers = [1, 2, 3, 4];
+    const squaredNumbers = numbers.map((number) => number + 2).filter((num)=> num > 2)
+    console.log(squaredNumbers); // Outputs: [1, 4, 9, 16]
+forEach:
+The forEach method iterates over each element in the array and calls a provided function for each element. It doesn't create a new array and doesn't return anything (returns undefined).
+const numbers = [1, 2, 3, 4];
+forEach((num,i)=>{
+  numbers[i]=num+2;
+})
+**3. What is lexical scope??**
+In languages that use lexical scope (such as JavaScript), the scope of a variable is determined by its location in the source code (i.e., the placement of the variable's declaration) and the nested structure of functions. When a function is defined inside another function, it creates a nested scope, and the inner function has access to variables in its own scope as well as variables in its containing (outer) function's scope.
+
+**4. what is closure?**
+A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function's scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
+eg:
+  const createBase=(num)=>{
+    return (inner)=>{
+        return num+inner;
+    }
+}
+var addSix = createBase(6)
+addSix(10) //16
+addSix(21) //27
+
+
+Exapmle how closure optimizes the code:
+const find1 = (index)=>{
+    let a=[]
+    for(let i=0; i<1000000;i++){
+        a[i]=i*i;
+    }
+
+    console.log(a[index])
+}
+console.time("6")
+find1(6)
+console.timeEnd("6")
+
+
+// optimized
+const find2 = ()=>{
+    let a=[]
+    for(let i=0; i<1000000;i++){
+        a[i]=i*i;
+    }
+
+    return (index)=>{
+        console.log(a[index])
+    }
+}
+const closure = find2();
+console.time("6")
+closure(6)
+console.timeEnd("6")
